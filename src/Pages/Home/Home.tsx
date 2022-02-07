@@ -33,9 +33,8 @@ const Home: React.FC = () => {
             userAvatar: tweet.userAvatar,
             text: tweet.text,
         }
-        // tweetsRef.current.push(tw);
-        // setTweets([...tweetsRef.current]);
-        setTweets([...tweets, tw]);
+        tweetsRef.current.push(tw);
+        setTweets([...tweetsRef.current]);
     }
 
     React.useEffect(() => {
