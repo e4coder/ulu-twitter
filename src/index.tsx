@@ -3,10 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { createStore, StoreProvider } from 'easy-peasy';
+
+import { gun } from './gun.instance';
+import { StoreModel } from './Store/StoreModel';
+
+const store = createStore(StoreModel);
+
+(window as any).gun = gun;
+(window as any).gun.get('x').put({ name: 'x' });
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <StoreProvider store={store}>
+        <App />
+      </StoreProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
